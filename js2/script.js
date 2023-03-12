@@ -1,17 +1,29 @@
 let i;
 const Nmax = 100;
+const fizzStr = 'Fizz'
+const fizzbuzzStr = 'Fizzbuzz'
+const buzzStr = 'buzz'
 
+let sqrContainer = document.getElementById('square-container')
 
 for(i=1; i<=Nmax; i++){
     if((i % 3 === 0) && (i % 5 === 0)){
-        console.log('Fizzbuzz')
+        sqrContainer.appendChild(squareGen(fizzbuzzStr, 'fizzbuzz-style'))
     }else if(i % 5 === 0){
-        console.log('fizz')
+        sqrContainer.appendChild(squareGen(buzzStr, 'buzz-style'))
     }
     else if(i % 3 === 0){
-        console.log('buzz')
+        sqrContainer.appendChild(squareGen(fizzStr, 'fizz-style'))
     }
     else{
-        console.log(i)
+        sqrContainer.appendChild(squareGen(i))
     }
+}
+
+
+function squareGen(text, classP) {
+    const div = document.createElement('div');
+    div.classList.add('square', 'd-flex', 'justify-content-center', 'align-items-center', classP);
+    div.innerHTML = `<small>${text}</small>`;
+    return div;
 }
